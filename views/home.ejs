@@ -1,0 +1,25 @@
+<%-include("partials/header")-%>
+<h1>Home</h1>
+<p><%=homeContent1%></p>
+<a href="/compose"> <button type="submit" class="btn btn-primary" name="button">Compose</button></a>
+
+
+<%posts.forEach((element)=>{%>
+<form action="/delete" method="post">
+    <div class="title">
+        <input type="hidden" name="postId" value="<%=element._id%>">
+
+        <h1 class="h1"><%=element.title%></h1>
+        <!-- <span><i class="fa fa-trash"></i></span> use this inside h1 tag -->
+        <p>
+            <%=element.content.substring(0, 75) + "..."%>
+            <a href="/posts/<%=element._id%>">Read More</a>
+        </p>
+        <button class="btn btn-primary" id="delete">Delete</button>
+        <hr>
+
+    </div>
+</form>
+<%})%>
+
+<%-include("partials/footer")-%>
