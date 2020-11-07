@@ -1,4 +1,5 @@
 //jshint esversion:6
+require("dotenv").config();
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -20,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // connect with mongodb
-mongoose.connect("mongodb://localhost/pageDB", {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
